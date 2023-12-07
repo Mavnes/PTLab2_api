@@ -43,5 +43,16 @@ namespace PTLab2_api.Data.DTO
             TotalExpenses = null;
             Sale = null;
         }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is UserDto dto &&
+                   Id == dto.Id &&
+                   Name == dto.Name &&
+                   Email == dto.Email &&
+                   Password == dto.Password &&
+                   TotalExpenses == dto.TotalExpenses &&
+                   Sale == dto.Sale;
+        }
     }
 }

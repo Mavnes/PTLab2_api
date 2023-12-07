@@ -17,5 +17,12 @@ namespace PTLab2_api.Data.Models
             MinTotalExpenses = minTotalExpenses;
         }
 
+        public override bool Equals(object? obj)
+        {
+            return obj is Sale sale &&
+                   Id == sale.Id &&
+                   Value == sale.Value &&
+                   MinTotalExpenses == sale.MinTotalExpenses;
+        }
     }
 }

@@ -43,5 +43,16 @@ namespace PTLab2_api.Data.Models
             TotalExpenses = null;
             SaleId = null;
         }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is User user &&
+                   Id == user.Id &&
+                   Name == user.Name &&
+                   Email == user.Email &&
+                   Password == user.Password &&
+                   TotalExpenses == user.TotalExpenses &&
+                   SaleId == user.SaleId;
+        }
     }
 }

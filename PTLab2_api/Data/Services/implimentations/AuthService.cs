@@ -27,12 +27,10 @@ namespace PTLab2_api.Data.Services.implimentations
 
             try
             {
-                var sale = _unitOfWork.Sales.GetAll()
-                                            .OrderBy(s => s.MinTotalExpenses)
-                                            .First();
+                var sale = _unitOfWork.Sales.GetBaseSale();
 
                 User user = new User(0, name, email, password, 0, sale.Id);
-
+                
                 if (sale is null)
                 {
                     _response.Message = "User was not received.";

@@ -18,5 +18,13 @@ namespace PTLab2_api.Data.Models
             Name = name;
             Price = price;
         }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Product product &&
+                   Id == product.Id &&
+                   Name == product.Name &&
+                   Price == product.Price;
+        }
     }
 }

@@ -26,5 +26,16 @@ namespace PTLab2_api.Data.Models
             UserId = userId;
             UsedPrice = usedPrice;
         }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Purchase purchase &&
+                   Id == purchase.Id &&
+                   Date == purchase.Date &&
+                   Address == purchase.Address &&
+                   ProductId == purchase.ProductId &&
+                   UserId == purchase.UserId &&
+                   UsedPrice == purchase.UsedPrice;
+        }
     }
 }

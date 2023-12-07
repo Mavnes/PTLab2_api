@@ -3,6 +3,6 @@ namespace PTLab2_api.Data.Repositories.Interfaces
 {
     public interface ISaleRepository : IRepository<Sale>
     {
-
+        Sale? GetBaseSale();
     }
 }

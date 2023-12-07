@@ -24,5 +24,14 @@ namespace PTLab2_api.Data.DTO
             ProductName = productName;
             UsedPrice = usedPrice;
         }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is PurchaseDto dto &&
+                   Id == dto.Id &&
+                   Address == dto.Address &&
+                   ProductName == dto.ProductName &&
+                   UsedPrice == dto.UsedPrice;
+        }
     }
 }

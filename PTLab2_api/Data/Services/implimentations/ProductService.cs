@@ -16,9 +16,21 @@ namespace PTLab2_api.Data.Services.implimentations
 
             try
             {
-                _response.Data = _unitOfWork.Products.Get(id);
-                _response.Message = "Product was successfully received.";
-                _response.Success = true;
+                var product = _unitOfWork.Products.Get(id);
+
+                if (product is not null) 
+                {
+                    _response.Data = product;
+                    _response.Message = "Product was successfully received.";
+                    _response.Success = true;
+
+                    return _response;
+                }
+
+                _response.Message = "Product was not received.";
+                _response.ErrorMessages = new List<string> { "Product was not found." };
+                _response.Success = false;
+                _response.Data = null;
 
                 return _response;
             }
@@ -39,9 +51,21 @@ namespace PTLab2_api.Data.Services.implimentations
 
             try
             {
-                _response.Data = _unitOfWork.Products.GetAll().ToList();
-                _response.Message = "The list of products was successfully received.";
-                _response.Success = true;
+                var products = _unitOfWork.Products.GetAll().ToList();
+
+                if (products is not null)
+                {
+                    _response.Data = products;
+                    _response.Message = "The list of products was successfully received.";
+                    _response.Success = true;
+
+                    return _response;
+                }
+
+                _response.Message = "The list of products was not received.";
+                _response.ErrorMessages = new List<string> { "Products were not found." };
+                _response.Success = false;
+                _response.Data = null;
 
                 return _response;
             }
